@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recipe Hub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-inner">
+        <h1>Recipe Hub</h1>
+        <p>Discover and share your favourite recipes</p>
+        <div class="controls">
+          <input id="search" type="search" placeholder="Search recipes..." />
+          <select id="categoryFilter">
+            <option value="All">All</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Veg">Veg</option>
+            <option value="Non-Veg">Non-Veg</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Main Course">Main Course</option>
+          </select>
+          <a class="btn" href="add-recipe.html">Add Recipe</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="recipeGrid" class="recipe-container"></section>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

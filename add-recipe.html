@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Add Recipe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="small-header">
+      <a href="index.html" class="back">← Back</a>
+      <h1>Add Recipe</h1>
+    </header>
+
+    <main class="form-main">
+      <form id="addForm">
+        <label>Recipe name<input type="text" id="name" required /></label>
+        <label
+          >Category
+          <select id="category">
+            <option>Veg</option>
+            <option>Non-Veg</option>
+            <option>Breakfast</option>
+            <option>Dessert</option>
+            <option>Main-Course</option>
+          </select>
+        </label>
+        <label
+          >Time to cook<input
+            id="time"
+            type="text"
+            placeholder="e.g. 30 mins"
+            required
+        /></label>
+        <label
+          >Image path (local)
+          <input id="img" placeholder="images/myphoto.jpg" required
+        /></label>
+        <label>Description<textarea id="desc"></textarea></label>
+
+        <label
+          >Ingredients (one per line)<textarea
+            id="ingredients"
+            placeholder="eg: 2 eggs\n1 onion"
+          ></textarea>
+        </label>
+        <label>Steps (one per line)<textarea id="steps"></textarea></label>
+
+        <button class="btn" type="submit">Save Recipe</button>
+      </form>
+    </main>
+
+    <script>
+      const form = document.getElementById("addForm");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const saved = JSON.parse(localStorage.getItem("recipes") || "null");
+        const list = saved || SAMPLE_RECIPES.slice();
+
+        // Create new ID
+        const nextId = list.length ? Math.max(...list.map((r) => r.id)) + 1 : 1;
+
+        const recipe = {
+          id: nextId,
+          name: document.getElementById("name").value.trim(),
+          category: document.getElementById("category").value,
+          time: document.getElementById("time").value,
+          img: document.getElementById("img").value.trim(),
+          description: document.getElementById("desc").value.trim(),
+          ingredients: document
+            .getElementById("ingredients")
+            .value.split("\n")
+            .map((s) => s.trim())
+            .filter(Boolean),
+          steps: document
+            .getElementById("steps")
+            .value.split("\n")
+            .map((s) => s.trim())
+            .filter(Boolean),
+        };
+
+        list.push(recipe);
+        localStorage.setItem("recipes", JSON.stringify(list));
+
+        // Redirect to the new recipe page
+        window.location.href = `recipe.html?id=${recipe.id}`;
+      });
+    </script>
+  </body>
+</html>

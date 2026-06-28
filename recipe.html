@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recipe — Details</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="small-header">
+      <a href="index.html" class="back">← Back</a>
+      <h1 id="title">Recipe</h1>
+    </header>
+
+    <main class="detail-main">
+      <img id="image" alt="Recipe image" class="detail-img" />
+      <p id="desc"></p>
+
+      <div class="meta"><span id="cat"></span> • <span id="time"></span></div>
+
+      <h2>Ingredients</h2>
+      <ul id="ingredients"></ul>
+
+      <h2>Steps</h2>
+      <ol id="steps"></ol>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
